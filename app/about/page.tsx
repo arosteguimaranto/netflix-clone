@@ -59,7 +59,7 @@ export default function Auth() {
             </div>
 
             <button
-              onClick={variant === "login" ? "login" : "register"}
+             // onClick={variant === "login" ? login : register}
               className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
               {variant === "login" ? "Login" : "Sign up"}
