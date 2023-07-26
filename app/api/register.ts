@@ -7,6 +7,7 @@ import {NextApiRequest, NextApiResponse} from 'next';
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+    console.log(req)
     if(req.method === 'POST'){
         return res.status(405).end();
     }
@@ -31,7 +32,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 name,
                 hashedPassword,
                 image: '',
-                emailVerifed: new Date(),
+                emailVerified: new Date(),
             }
         });
 
