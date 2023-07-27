@@ -1,6 +1,4 @@
-import prismadb from '../../lib/prismadb'
-
-
+import prismadb from '../../libs/prismadb'
 
 import bcrypt from 'bcrypt'
 import {NextApiRequest, NextApiResponse} from 'next';
