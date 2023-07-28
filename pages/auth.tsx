@@ -1,6 +1,5 @@
-"use client";
 import axios from "axios";
-import Input from "@/components/input";
+import Input from "@/components/Input";
 import { useState, useCallback } from "react";
 
 export default function Auth() {
