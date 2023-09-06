@@ -1,27 +1,29 @@
 import axios from "axios";
-import Input from "@/components/Input";
 import { useState, useCallback } from "react";
 
-export default function Auth() {
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+import Input from "@/components/Input";
 
-  const [variant, setvariant] = useState("login");
+export default function Auth() {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('');
+
+  const [variant, setvariant] = useState('login');
 
   const toggleVariant = useCallback(() => {
     setvariant((currentVariant) =>
-      currentVariant === "login" ? "register" : "login"
-    );
+      currentVariant === "login" ? "register" : "login");
   }, []);
+
 
   const register = useCallback(async() => {
     try{
-      await axios.post('/api/register', {
+       await axios.post('/api/register', {
         email,
         name,
         password
       });
+
     } catch (error) {
       console.log(error);
     }
@@ -42,52 +44,38 @@ export default function Auth() {
             <div className="flex flex-col gap-4">
               {variant === "register" && (
                 <Input
-                  label="Username"
-                  onChange={(e: any) => {
-                    setName(e.target.value);
-                  }}
-                  id="name"
-                  value={name}
+                id="name"
+                type="text"
+                label="Username"
+                value={name}
+                onChange={(e: any) => setName(e.target.value)} 
                 />
               )}
 
               <Input
-                label="Email"
-                onChange={(e: any) => {
-                  setEmail(e.target.value);
-                }}
                 id="email"
                 type="email"
+                label="Email address or phone number"
                 value={email}
+                onChange={(e: any) => setEmail(e.target.value)} 
               />
               <Input
-                label="Password"
-                onChange={(e: any) => {
-                  setPassword(e.target.value);
-                }}
-                id="password"
-                type="password"
-                value={password}
+                 type="password" 
+                 id="password" 
+                 label="Password" 
+                 value={password}
+                 onChange={(e: any) => setPassword(e.target.value)} 
               />
             </div>
 
-            <button
-            onClick={register}
-             //onClick={variant === "login" ? login : register}
-              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
-            >
-              {variant === "login" ? "Login" : "Sign up"}
+            <button 
+            onClick={register} className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+              {variant === 'login' ? 'Login' : 'Sign up'}
             </button>
-            <div className="flex flex-row items-center gap-4 mt-8 justify-center"></div>
             <p className="text-neutral-500 mb-6">
-              {variant === "login"
-                ? "First time using Netflix?"
-                : "Already have an account?"}
-              <span
-                onClick={toggleVariant}
-                className="text-white ml-1 hover:underline cursor-pointer"
-              >
-                {variant === "login" ? "Create an account" : "Login"}
+              {variant === 'login' ? 'First time using Netflix?' : 'Already have an account?'}
+              <span onClick={toggleVariant} className="text-white ml-1 hover:underline cursor-pointer">
+                {variant === 'login' ? 'Create an account' : 'Login'}
               </span>
               
             </p>
