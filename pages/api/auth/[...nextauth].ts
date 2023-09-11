@@ -2,8 +2,8 @@ import NextAuth from "next-auth/next";
 import Credentials from "next-auth/providers/credentials";
 import { compare } from "bcrypt";
 
-import {} from 'next-auth/providers/github'
-import{} from 'next-auth/providers/google'
+import GithubProvider  from 'next-auth/providers/github'
+import GoogleProvider from 'next-auth/providers/google'
 
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prismadb from "@/libs/prismadb";
@@ -11,7 +11,14 @@ import prismadb from "@/libs/prismadb";
 //@ts-ignore
 export default NextAuth({
   providers: [
-
+    GithubProvider({
+      clientId: process.env.GITHUB_ID || '',
+      clientSecret: process.env.GITHUB_SECRET || ''
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID || '',
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET || ''
+    }),
     Credentials({
       id: "credentials",
       name: "Credentials",
