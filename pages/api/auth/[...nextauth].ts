@@ -40,10 +40,6 @@ export default NextAuth({
         const user = await prismadb.user.findUnique({
           where: {
             email: credentials.email,
-            /* 
-             const user: User | null = await prismadb.user.findUnique({
-              where: {
-                email: credentials.email */
           },
         });
         if (!user || !user.hashedPassword) {
