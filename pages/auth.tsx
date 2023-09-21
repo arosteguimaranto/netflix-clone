@@ -12,10 +12,10 @@ export default function Auth() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  const [variant, setvariant] = useState("login");
+  const [variant, setVariant] = useState("login");
 
   const toggleVariant = useCallback(() => {
-    setvariant((currentVariant) =>
+    setVariant((currentVariant) =>
       currentVariant === "login" ? "register" : "login"
     );
   }, []);
