@@ -1,8 +1,10 @@
 import React from 'react';
-import {useRouter} from 'next/router'
+import { useRouter } from 'next/router'
 import { BsFillPlayFill } from 'react-icons/bs'
 import FavoriteButton from './FavoriteButton';
 import { MovieInterface } from '@/types';
+import useInfoModal from '@/hooks/useInfoModal';
+import { BiChevronDown } from 'react-icons/bi'
 
 interface MovieCardProps {
     data: MovieInterface;
@@ -15,11 +17,12 @@ const MovieCard: React.FC<MovieCardProps> = ({
 }) => {
 
     const router = useRouter();
+    const { openModal } = useInfoModal();
 
     return (
         <div className='group bg-zinc-900 col-span relative h-[12vw]'>
             <img
-                src={data.thumbnailUrl} alt="Movie" 
+                src={data.thumbnailUrl} alt="Movie"
                 className='
                 cursor-pointer 
                 object-cover 
@@ -32,7 +35,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
                 delay-300 
                 w-full 
                 h-[12w]'
-                />
+            />
             <div className='
             opacity-0 
             absolute 
@@ -49,8 +52,8 @@ const MovieCard: React.FC<MovieCardProps> = ({
             group-hover:translate-x-[2vw] 
             group-hover:opacity-100'>
                 <img
-                src={data.thumbnailUrl} alt="Thumbnail"
-                className='
+                    src={data.thumbnailUrl} alt="Thumbnail"
+                    className='
                 cursor-pointer 
                 object-cover 
                 transition 
@@ -59,7 +62,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
                 rounded-t-md 
                 w-full 
                 h-[12vw]'
-                     />
+                />
                 <div className='
                 z-10 
                 bg-zinc-800 
@@ -70,12 +73,19 @@ const MovieCard: React.FC<MovieCardProps> = ({
                 transition 
                 shadow-md 
                 rounded-b-md'>
-                 <div className=' flex flex-row items-center gap-3'>
+                    <div className=' flex flex-row items-center gap-3'>
                         <div className=' cursor-pointer w-6 h-6 lg:w-10 lg:h-10 bg-white rounded-full flex justify-center items-center transition hover:bg-neutral-300'
-                            onClick={()=> router.push(`/watch/${data.id}`)}>
+                            onClick={() => router.push(`/watch/${data.id}`)}>
                             <BsFillPlayFill size={30} />
                         </div>
                         <FavoriteButton movieId={data.id} />
+                        <div 
+                        onClick={()=> openModal(data?.id)}
+                        className='cursor-pointer ml-auto group/item w-6 h-6 lg:w-10 lg:h-10 border-white border-2 rounded-full flex justify-center items-center transition hover:border-neutral-300'>
+                            <BiChevronDown
+                            size={30}
+                             className='text-white group-hover/item:text-neutral-300' />
+                        </div>
 
                     </div>
                     <p className='text-green-400 font-semibold mt-4'>
