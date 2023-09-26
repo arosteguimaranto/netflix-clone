@@ -31,13 +31,13 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
 
     mutate({
       ...currentUser,
-      favoriteIds: updatedFavoriteIds
+      favoriteIds: updatedFavoriteIds,
     });
 
     mutateFavorites();
   }, [movieId, isFavorite, currentUser, mutate, mutateFavorites]);
 
-  const Icon = isFavorite? AiOutlineCheck : AiOutlinePlus;
+  const Icon = isFavorite ? AiOutlineCheck : AiOutlinePlus;
 
   return (
     <div 
