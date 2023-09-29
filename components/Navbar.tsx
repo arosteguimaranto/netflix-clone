@@ -3,6 +3,9 @@ import { BsChevronDown, BsSearch, BsBell } from "react-icons/bs";
 import NavbarItem from "./NavbarItem";
 import MobileMenu from "./MobileMenu";
 import AccountMenu from "./AccountMenu";
+import Image from "next/image";
+import bluePic from '../public/images/default-blue.png'
+import logoPic from '../public/images/logo.png'
 
 const TOP_OFFSET = 66;
 
@@ -42,7 +45,7 @@ const Navbar = () => {
           showBackground ? "bg-zinc-900 bg-opacity-90" : ""
         } `}
       >
-        <img className="h-4 lg:h-7" src="/images/logo.png" alt="Logo" />
+        <Image className="h-4 lg:h-7 w-auto" src={logoPic} alt="Logo" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
           <NavbarItem label="Home" />
           <NavbarItem label="Series" />
@@ -77,7 +80,7 @@ const Navbar = () => {
             className=" flex flex-row items-center gap-2 cursor-pointer relative"
           >
             <div className=" w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
-              <img src="/images/default-blue.png" alt="" />
+              <Image src={bluePic} alt="" />
             </div>
             <BsChevronDown
               className={` text-white transition ${
