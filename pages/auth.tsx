@@ -3,11 +3,14 @@ import axios from 'axios';
 import { useCallback, useState } from 'react';
 import { NextPageContext } from 'next';
 import Image from 'next/image';
+import Image from 'next/image';
 import { getSession, signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
-import Input from '@/components/Input';
+import Input from '@/components/input';
+import logoPic from '../public/images/logo.png'
+
 import logoPic from '../public/images/logo.png'
 
 
